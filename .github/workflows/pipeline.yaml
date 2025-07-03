@@ -11,7 +11,7 @@ env:
   GIT_SHA: ${{ github.sha }}
 
 jobs:
-  build-push-deploy:
+  build-push-deploy-backend-java-and-database:
     runs-on: ubuntu-latest
 
     steps:
