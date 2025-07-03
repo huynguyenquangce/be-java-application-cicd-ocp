@@ -42,6 +42,18 @@ jobs:
           sudo mv oc kubectl /usr/local/bin/
           oc
 
+
+      - name: Print environment (debug)
+        env:
+          OCP_SERVER: ${{ secrets.OCP_SERVER }}
+          OCP_TOKEN: ${{ secrets.OCP_TOKEN }}
+        run: |
+          echo "::debug::OCP_SERVER = $OCP_SERVER"
+          echo "::debug::OCP_TOKEN starts with = ${OCP_TOKEN:0:10}"
+          if [ -z "$OCP_SERVER" ]; then echo "❌ SERVER is empty"; exit 1; fi
+          if [ -z "$OCP_TOKEN" ]; then echo "❌ TOKEN is empty"; exit 1; fi
+
+
       - name: Login to OpenShift
         run: |
           echo "Logging into OpenShift..."
