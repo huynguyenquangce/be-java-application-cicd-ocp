@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: fe_application
+  IMAGE_NAME: be_application
   IMAGE_REGISTRY: docker.io
   GIT_SHA: ${{ github.sha }}
 
