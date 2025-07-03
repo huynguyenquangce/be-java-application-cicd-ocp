@@ -69,10 +69,11 @@ jobs:
           echo "Token: ${{ secrets.OCP_TOKEN }}"  
           oc login --token=${{ secrets.OCP_TOKEN }} --server=${{ secrets.OCP_SERVER }}
 
-      - name: Deploy to OpenShift
+      - name: Deploy Java Application to OpenShift
         run: |
           oc apply -f k8s/deployment.yaml
 
+      - name: Deploy Database to OpenShift
+        run: |
+          oc apply -f k8s/database_deployment.yaml
           
-        # oc rollout status deployment/myapp
-        # oc project ${{ secrets.OCP_NAMESPACE }}
