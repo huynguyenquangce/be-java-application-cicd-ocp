@@ -44,8 +44,6 @@ jobs:
       - name: Login to OpenShift
         run: |
           echo "Logging into OpenShift..."
-          echo "Server: ${{ secrets.OCP_SERVER }}"    
-          echo "Token: ${{ secrets.OCP_TOKEN }}"  
           oc login --token=${{ secrets.OCP_TOKEN }} --server=${{ secrets.OCP_SERVER }}
 
       # - name: Deploy Java Application to OpenShift
