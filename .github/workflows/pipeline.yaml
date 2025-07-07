@@ -45,15 +45,13 @@ jobs:
             -d "$payload"
 
 
-      # # 1
       # - name: Patch image tag in deployment.yaml
       #   run: |
       #     sed -i "s|image: .*|image: ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA}|" k8s/deployment.yaml
       #     echo "----- PATCHED deployment.yaml -----"
       #     cat k8s/deployment.yaml
 
-      # # 1
-      # # 2
+
       # - name: Install OpenShift CLI
       #   run: |
       #     curl https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz | tar -xz        
@@ -61,19 +59,18 @@ jobs:
       #     oc
 
 
-      # # 1
-      # # 2
+
       # - name: Login to OpenShift
       #   run: |
       #     echo "Logging into OpenShift..."
       #     oc login --token=${{ secrets.OCP_TOKEN }} --server=${{ secrets.OCP_SERVER }}
 
-      # # 1
+
       # - name: Deploy Java Application to OpenShift
       #   run: |
       #     oc apply -f k8s/deployment.yaml
 
-      # # 1
+
       # - name: Deploy Database to OpenShift
       #   run: |
       #     oc apply -f k8s/database_deployment.yaml
@@ -81,15 +78,14 @@ jobs:
 
 
 # -------------------------------------------------------------------------
-      ## 2
+
       # - name: Download tkn
       #   run: |
       #     curl -LO https://github.com/tektoncd/cli/releases/download/v0.39.0/tkn_0.39.0_Linux_x86_64.tar.gz
       #     tar -xvf tkn_0.39.0_Linux_x86_64.tar.gz
       #     sudo mv tkn /usr/local/bin
       #     tkn version 
-
-      ## 2    
+  
       # - name: Trigger pipeline 
       #   run: |
       #       tkn pipeline start build-and-deploy \
