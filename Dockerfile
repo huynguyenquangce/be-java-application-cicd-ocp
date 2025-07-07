@@ -2,7 +2,7 @@
 
 # --- Stage 1: Build the Application ---
 # FROM maven:3.9.6-eclipse-temurin-17-alpine AS builder  
-FROM docker.io/library/maven:3.9.6-eclipse-temurin-17-alpine
+FROM docker.io/library/maven:3.9.6-eclipse-temurin-17-alpine AS builder 
 WORKDIR /app
 COPY pom.xml .  
 RUN mvn dependency:go-offline 
