@@ -14,20 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      # - name: Checkout source
+      #   uses: actions/checkout@v4
 
-      - name: Docker Login
-        run: |
-          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      # - name: Docker Login
+      #   run: |
+      #     echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Build image
-        run: |
-          docker build -t ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA} .
+      # - name: Build image
+      #   run: |
+      #     docker build -t ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA} .
 
-      - name: Push image
-        run: |
-          docker push ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA}
+      # - name: Push image
+      #   run: |
+      #     docker push ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA}
 
 
       - name: Trigger Tekton Webhook
