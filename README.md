@@ -115,6 +115,6 @@ jobs:
 * Name of remote repository must not contains `_` for creating resouces for OCP Pipeline. For example `fe_application` must be `fe-application`
 
 # Instructions to OCP Pipeline base Tekton
-Check out the instructions repository: [IoT Light System](https://github.com/huynguyenquang116/iot-light-system)
+Check out the instructions repository: [IoT Light System](https://github.com/huynguyenquangce/OCP-Tekton-Resources-CI-CD)
 
 
