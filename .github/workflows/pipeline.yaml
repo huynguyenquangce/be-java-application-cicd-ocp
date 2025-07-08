@@ -56,7 +56,6 @@ jobs:
       #   run: |
       #     curl https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz | tar -xz        
       #     sudo mv oc kubectl /usr/local/bin/
-      #     oc
 
 
 
