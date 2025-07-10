@@ -30,19 +30,19 @@ jobs:
       #     docker push ${IMAGE_REGISTRY}/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${GIT_SHA}
 
 
-      - name: Trigger Tekton Webhook
-        env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
-        run: |
-          payload=$(cat "$GITHUB_EVENT_PATH")
-          signature='sha1='$(echo -n "$payload" | openssl sha1 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+      # - name: Trigger Tekton Webhook
+      #   env:
+      #     WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+      #     WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+      #   run: |
+      #     payload=$(cat "$GITHUB_EVENT_PATH")
+      #     signature='sha1='$(echo -n "$payload" | openssl sha1 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
 
-          curl -X POST $WEBHOOK_URL \
-            -H "Content-Type: application/json" \
-            -H "X-GitHub-Event: push" \
-            -H "X-Hub-Signature: $signature" \
-            -d "$payload"
+      #     curl -X POST $WEBHOOK_URL \
+      #       -H "Content-Type: application/json" \
+      #       -H "X-GitHub-Event: push" \
+      #       -H "X-Hub-Signature: $signature" \
+      #       -d "$payload"
 
 
       # - name: Patch image tag in deployment.yaml
